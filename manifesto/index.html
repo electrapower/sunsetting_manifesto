@@ -302,5 +302,30 @@
     window.addEventListener('load', onScroll);
     onScroll();
   </script>
+  <script>
+  // --- About modal ---
+  (function(){
+    const openBtn = document.getElementById('about-open');
+    const modal   = document.getElementById('about-modal');
+    const closeBtn= document.getElementById('about-close');
+
+    function openModal(){
+      modal.hidden = false;
+      // фокус на кнопку закрытия
+      closeBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.hidden = true;
+      openBtn.focus();
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(!modal.hidden && e.key === 'Escape') closeModal(); });
+  })();
+</script>
 </body>
 </html>
