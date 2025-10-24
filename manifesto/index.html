@@ -81,41 +81,51 @@
       transition:opacity .25s ease, filter .08s linear, transform .08s linear;
     }
 
-    /* ===== HERO: заголовок слева, "offline + описание + кнопка" по центру ===== */
+    /* ===== HERO: заголовок слева, оффлайн-блок — РОВНО по центру экрана ===== */
 .hero{
-  position: relative;
-  min-height: 92vh;              /* секция держит высоту экрана */
-  padding: 10vh 10vw 6vh;        /* компактнее низ */
+  /* секция сама держит высоту экрана — никакого «хвоста» */
+  min-height: 90vh;
+
+  /* grid: заголовок (row1) + центрируемый блок (row2) */
+  display: grid;
+  grid-template-rows: auto 1fr;   /* h1 сверху, остальное центрируем во второй строке */
+  row-gap: 3vh;                   /* ДЫШАЩИЙ отступ между заголовком и оффлайн-блоком */
+
+  padding: 10vh 8vw 4vh;          /* компактнее снизу, поля по краям */
   max-width: 1060px;
   z-index: 1;
+  position: relative;
 }
+
+/* заголовок остаётся выровнен влево */
 h1{
   font-size: clamp(42px, 6vw, 96px);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin: 0;                      /* отступом управляет row-gap */
   text-align: left;
 }
 
-/* по умолчанию (мобильные) — обычный поток */
+/* блок "Offline… + описание + кнопка" — геометрически по ЦЕНТРУ экрана */
 .hero-center{
-  max-width: 70ch;
-  margin: 2vh auto 0;
+  place-self: center;             /* центр по горизонтали и вертикали во 2-й строке */
   text-align: center;
+  max-width: 70ch;
 }
-.hero-center .kicker{ font-weight:700; letter-spacing:.5px; opacity:.95; margin-bottom:12px }
-.hero-center .cta{ margin-top:24px }
 
-/* ≥900px — геометрическое центрирование ВНУТРИ hero */
-@media (min-width: 900px){
-  .hero-center{
-    position: absolute;          /* НИ-КА-КОГО fixed */
-    left: 50%;
-    top: 56%;                    /* 50% — ровно центр; 56% — чуть ниже */
-    transform: translate(-50%, -50%);
-    margin: 0;
-    width: min(70ch, 80vw);
-    text-align: center;
-  }
+.hero-center .kicker{
+  font-weight: 700;
+  letter-spacing: .5px;
+  opacity: .95;
+  margin-bottom: 12px;
+}
+
+.hero-center .cta{
+  margin-top: 24px;
+}
+
+/* первый блок после hero — маленький верхний отступ */
+.section--compact{
+  padding-top: 3vh;
 }
 
     /* Секции */
