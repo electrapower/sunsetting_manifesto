@@ -81,44 +81,46 @@
       transition:opacity .25s ease, filter .08s linear, transform .08s linear;
     }
 
-    /* ===== HERO: заголовок слева, центрированный блок "offline + текст + кнопка" ===== */
+    /* ===== HERO ===== */
 .hero{
-  min-height: 100svh;         /* высота = экран, корректно на мобилках */
+  min-height: 90svh;
   max-width: 1060px;
-  padding: 8vh 8vw 4vh;       /* аккуратные поля, низ компактный */
-
-  /* сетка: строка 1 — заголовок, строка 2 — центрируемая зона */
+  padding: 10vh 8vw 4vh;
   display: grid;
-  grid-template-rows: auto 1fr;
-  row-gap: 3vh;               /* расстояние между заголовком и центром */
+  grid-template-rows: auto 1fr; /* h1 + центрируемый блок */
+  row-gap: 3vh;
   position: relative;
   z-index: 1;
 }
-
-/* заголовок остаётся слева */
 h1{
   font-size: clamp(42px, 6vw, 96px);
   font-weight: 700;
-  margin: 0;                  /* отступ задаёт row-gap */
+  margin: 0;
   text-align: left;
 }
 
-/* центрируем второй блок по обеим осям */
-.hero-center{
-  max-width: 70ch;
-  justify-self: center;       /* центр по горизонтали */
-  align-self: center;         /* центр по вертикали в оставшемся пространстве */
+/* ОДИНАКОВАЯ мера (ширина) и центрирование для hero-center и why-intro */
+.hero-center,
+.why-intro{
+  max-width: 72ch;           /* ← одинаковая ширина строки */
+  margin-inline: auto;       /* по центру по горизонтали */
   text-align: center;
 }
 
-/* типографика внутри центра */
+.hero-center{                /* центрируем по вертикали во второй строке hero */
+  align-self: center;
+}
+
 .hero-center .kicker{
   font-weight: 700;
   letter-spacing: .5px;
   opacity: .95;
   margin-bottom: 12px;
 }
-.hero-center .cta{ margin-top: 24px }
+.hero-center .cta{
+  display: inline-block;
+  margin: 28px auto 0;       /* кнопка строго по центру */
+}
 
     /* Секции */
     .section{ padding:6vh 10vw; position:relative; z-index:1 }
