@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Icons / PWA (оставь, если уже загрузила файлы в корень проекта) -->
+  <!-- Icons / PWA -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -27,7 +27,7 @@
 
   <style>
     :root{
-      /* Эти 4 цвета обновляются JS-ом при скролле */
+      /* плавно обновляются из JS по скроллу */
       --c1:#FFE9A8; /* noon */
       --c2:#FF9B62; /* warm orange */
       --c3:#7A5CFF; /* violet */
@@ -44,8 +44,7 @@
       text-transform:uppercase;
       position:relative;
     }
-
-    /* Диагональные motion-stripes (тонкие и ненавязчивые) */
+    /* лёгкие диагональные полосы */
     body::before{
       content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
       background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.08) 0 2px,transparent 2px 26px);
@@ -70,47 +69,11 @@
     }
     .header-link:hover{background:#fff;color:#0B1525}
 
-    /* Content */
-    .hero{ position:relative; padding:15vh 10vw 18vh; max-width:1060px; z-index:1 }
-    h1{ font-size:clamp(42px,6vw,96px); font-weight:700; margin-bottom:16px }
-    h2{ font-size:clamp(24px,3vw,48px); margin:48px 0 12px; font-weight:600; border-top:4px solid #fff; padding-top:12px }
-    h3{ font-size:clamp(18px,2.2vw,28px); margin:28px 0 6px; font-weight:600 }
-    p{ font-size:clamp(16px,1.8vw,22px); max-width:70ch; margin-bottom:16px }
-    .cta{
-      display:inline-block; margin-top:32px; background:#fff; color:#0B1525;
-      font-weight:700; font-size:18px; text-decoration:none; padding:16px 24px; border:4px solid #fff;
-      transition:transform .1s ease-in-out;
-    }
-    .cta:hover{ transform:translateY(-2px) }
-    .section{ padding:8vh 10vw; position:relative; z-index:1 }
-    .section:nth-child(even){ background:rgba(0,0,0,.22) }
-    .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:32px; margin-top:32px }
-    .stat{ border:4px solid #fff; padding:24px; text-align:center }
-    .mission{
-      text-align:center; padding:12vh 10vw;
-      background:#fff; color:#0B1525; z-index:1; position:relative;
-    }
-    /* центрируем подписи и кнопку в hero */
-    .hero-center{
-    max-width: 70ch;
-    margin: 4vh auto 0;     /* центр по ширине */
-    text-align: center;      /* центрируем текст и inline-элементы */
-    } 
-    .hero-center .kicker{
-    font-weight: 700;
-    letter-spacing: .5px;
-    opacity: .95;
-    margin-bottom: 12px;
-    }
-    .hero-center .cta{
-    margin-top: 32px;        /* кнопка ниже текста, центрится за счёт text-align */
-    }
-
-/* Sun (фикс к вьюпорту, управляется JS) */
-.sun{
-  position:fixed; z-index:0;
-  left:calc(100% - 18vw);
-  width:140px; height:140px; border-radius:50%;
+    /* Sun (фикс к вьюпорту, управляется JS) */
+    .sun{
+      position:fixed; z-index:0;
+      left:calc(100% - 18vw);
+      width:140px; height:140px; border-radius:50%;
       background:radial-gradient(circle at 30% 30%, #FFFBEA, #FFD08A 60%, rgba(255,106,61,0.9));
       transform:translate(-50%, 8vh) scale(1);
       filter:saturate(1.2) brightness(1);
@@ -118,90 +81,72 @@
       transition:opacity .25s ease, filter .08s linear, transform .08s linear;
     }
 
+    /* Layout */
+    .hero{ position:relative; padding:12vh 10vw 8vh; max-width:1060px; z-index:1 }
+    h1{ font-size:clamp(42px,6vw,96px); font-weight:700; margin-bottom:16px; text-align:left }
+    .hero-center{ max-width:70ch; margin:2vh auto 0; text-align:center }
+    .hero-center .kicker{ font-weight:700; letter-spacing:.5px; opacity:.95; margin-bottom:12px }
+    .hero-center .cta{ margin-top:24px }
+
+    .section{ padding:6vh 10vw; position:relative; z-index:1 }
+    /* первая секция после hero — более компактный верхний паддинг */
+    .section--compact{ padding-top:4vh }
+
+    h2{ font-size:clamp(24px,3vw,48px); margin:40px 0 12px; font-weight:600; border-top:4px solid #fff; padding-top:12px; text-align:left }
+    h3{ font-size:clamp(18px,2.2vw,28px); margin:28px 0 6px; font-weight:600; text-align:left }
+    p{ font-size:clamp(16px,1.8vw,22px); max-width:70ch; margin-bottom:16px }
+
+    .cta{
+      display:inline-block; background:#fff; color:#0B1525;
+      font-weight:700; font-size:18px; text-decoration:none;
+      padding:16px 24px; border:4px solid #fff;
+      transition:transform .1s ease-in-out;
+    }
+    .cta:hover{ transform:translateY(-2px) }
+
+    .stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:32px; margin-top:32px }
+    .stat{ border:4px solid #fff; padding:24px; text-align:center }
+
+    .mission{ text-align:center; padding:12vh 10vw; background:#fff; color:#0B1525; z-index:1; position:relative }
+
     /* Footer */
     .foot{
       color:#fff; text-align:center; padding:32px 16px;
       border-top:4px solid #fff; background:rgba(0,0,0,.3)
     }
-    .foot-actions{ display:flex; gap:18px; justify-content:center; align-items:center; margin-bottom:8px }
+    .foot-actions{ display:flex; gap:18px; justify-content:center; align-items:center; margin-bottom:12px; flex-wrap:wrap }
     .linklike{
-      background:transparent; color:#fff; text-decoration:none; cursor:pointer;
-      border:2px solid #fff; padding:8px 14px; border-radius:4px; font-weight:700;
+      display:inline-flex; align-items:center; justify-content:center;
+      inline-size:clamp(180px,22vw,220px); block-size:52px; padding:0 16px;
+      border:2px solid #fff; border-radius:8px; background:transparent; color:#fff;
+      text-decoration:none; cursor:pointer; font-family:inherit; font-size:1rem; font-weight:800;
+      text-transform:uppercase; letter-spacing:.6px; line-height:1; -webkit-appearance:none; appearance:none;
     }
     .linklike:hover{ background:#fff; color:#0B1525 }
 
     /* Modal */
-    .modal-backdrop[hidden]{ display:none !important; }  /* железобетонное скрытие */
-    .modal-backdrop{
-      position:fixed; inset:0; background:rgba(0,0,0,.6);
-      display:grid; place-items:center; z-index:50;
-    }
+    .modal-backdrop[hidden]{ display:none !important; }
+    .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:grid; place-items:center; z-index:50 }
     .modal{
       background:#fff; color:#0B1525; border:4px solid #0B1525; border-radius:6px;
-      padding:24px; width:min(92vw, 520px); text-transform:uppercase;
-      box-shadow:0 12px 40px rgba(0,0,0,.35);
+      padding:24px; width:min(92vw, 520px); text-transform:uppercase; box-shadow:0 12px 40px rgba(0,0,0,.35)
     }
     .modal h3{ font-size:24px; margin-bottom:8px }
     .modal p{ margin:0 0 16px; font-size:16px; text-transform:none }
     .modal-actions{ display:flex; justify-content:flex-end; gap:12px }
-    .cta-outline{
-      background:transparent; color:#0B1525; border:3px solid #0B1525; padding:10px 16px; font-weight:700;
-    }
+    .cta-outline{ background:transparent; color:#0B1525; border:3px solid #0B1525; padding:10px 16px; font-weight:700 }
     .cta-outline:hover{ background:#0B1525; color:#fff }
 
     @media (prefers-reduced-motion: reduce){
       body::before{ animation:none !important }
     }
-    /* ==== footer buttons unified ==== */
-.foot-actions {
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
-/* и button, и a имеют общий класс linklike */
-.linklike {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* одинаковый размер */
-  inline-size: clamp(180px, 22vw, 220px); /* адаптивная одинаковая ширина */
-  block-size: 52px;                       /* одинаковая высота */
-  padding: 0 16px;                        /* внутренние отступы */
-
-  border: 2px solid #fff;
-  border-radius: 8px;
-  background: transparent;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-
-  /* одинаковый текст для кнопки и ссылки */
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 800;          /* жирный, как у CONTACT */
-  text-transform: uppercase; /* ABOUT тоже станет caps */
-  letter-spacing: 0.6px;
-  line-height: 1;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.linklike:hover {
-  background: #fff;
-  color: #0B1525;
-}
   </style>
 </head>
 <body>
   <header>
     <div class="brand">
-      <!-- положи этот PNG рядом с index.html; он должен быть с прозрачным фоном -->
-      <img src="sunsettings-icon-transparent.png" alt="Sunsettings icon" class="brand-icon">
+      <!-- PNG с прозрачным фоном рядом с index.html -->
+      <img src="sunsettings-icon-192.png" alt="Sunsettings icon" class="brand-icon">
       <span>SUNSETTINGS</span>
     </div>
     <a href="https://catch.sunsettings.app" target="_blank" rel="noopener" class="header-link">Launch App</a>
@@ -212,16 +157,14 @@
 
     <section class="hero">
       <h1>Your Full Access to Basic Miracles</h1>
-
-      <!-- центрируем только этот блок -->
       <div class="hero-center" aria-label="intro">
-      <p class="kicker">Offline is the new luxury.</p>
-      <p>Track, rate, and share the world's most beautiful sunsets. AI-powered predictions meet human connection in the ultimate offline social experience.</p>
-      <a href="#how" class="cta">Start Tracking Sunsets</a>
+        <p class="kicker">Offline is the new luxury.</p>
+        <p>Track, rate, and share the world's most beautiful sunsets. AI-powered predictions meet human connection in the ultimate offline social experience.</p>
+        <a href="#how" class="cta">Start Tracking Sunsets</a>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--compact">
       <h2>Why Sunsettings?</h2>
       <p>In a world of endless scrolling, we're bringing you back to what matters: real moments, real beauty, real connection.</p>
 
@@ -279,7 +222,7 @@
     <div class="foot-copy">© Sunsettings · Offline is the New Luxury</div>
   </footer>
 
-  <!-- ABOUT MODAL (hidden по умолчанию) -->
+  <!-- ABOUT MODAL -->
   <div class="modal-backdrop" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
     <div class="modal">
       <h3 id="about-title">Made by Sunsettings Team</h3>
@@ -291,82 +234,70 @@
   </div>
 
   <script>
-    /* ===== helpers для цвета ===== */
-    const lerp = (a,b,t)=>a+(b-a)*t;
-    const hex2rgb = h=>{
-      const m = h.replace('#','');
-      const n = m.length===3 ? m.split('').map(c=>c+c).join('') : m;
-      return [parseInt(n.slice(0,2),16),parseInt(n.slice(2,4),16),parseInt(n.slice(4,6),16)];
-    };
-    const rgb2hex = ([r,g,b])=>'#'+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');
-    const mix = (h1,h2,t)=>{
-      const a=hex2rgb(h1), b=hex2rgb(h2);
-      return rgb2hex([lerp(a[0],b[0],t), lerp(a[1],b[1],t), lerp(a[2],b[2],t)]);
-    };
+    /* helpers для цвета */
+    const lerp=(a,b,t)=>a+(b-a)*t;
+    const hex2rgb=h=>{const m=h.replace('#','');const n=m.length===3?m.split('').map(c=>c+c).join(''):m;return[parseInt(n.slice(0,2),16),parseInt(n.slice(2,4),16),parseInt(n.slice(4,6),16)]};
+    const rgb2hex=([r,g,b])=>'#'+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');
+    const mix=(h1,h2,t)=>{const a=hex2rgb(h1),b=hex2rgb(h2);return rgb2hex([lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)])};
 
-    /* Палитры дня → закат → ночь */
-    const noon = ['#FFE9A8','#FFC073','#A98BFF','#1B2A4A'];
-    const dusk = ['#FFB457','#FF6A3D','#7A5CFF','#0E1B30'];
-    const night= ['#2C2C3A','#23283E','#131B2B','#000814'];
+    const noon=['#FFE9A8','#FFC073','#A98BFF','#1B2A4A'];
+    const dusk=['#FFB457','#FF6A3D','#7A5CFF','#0E1B30'];
+    const night=['#2C2C3A','#23283E','#131B2B','#000814'];
 
-    const sun = document.querySelector('.sun');
-    const mission = document.querySelector('.mission');
+    const sun=document.querySelector('.sun');
+    const mission=document.querySelector('.mission');
 
     function onScroll(){
-      const doc = document.documentElement;
-      const scrolled = doc.scrollTop;
-      const max = doc.scrollHeight - doc.clientHeight;
-      const t = max>0 ? Math.min(1, Math.max(0, scrolled / max)) : 0; // 0..1
+      const doc=document.documentElement;
+      const scrolled=doc.scrollTop;
+      const max=doc.scrollHeight-doc.clientHeight;
+      const t=max>0?Math.min(1,Math.max(0,scrolled/max)):0;
 
-      // Небо: 0..0.5 — noon→dusk, 0.5..1 — dusk→night
-      const phase = t<0.5 ? (t/0.5) : ((t-0.5)/0.5);
-      const from = t<0.5 ? noon : dusk;
-      const to   = t<0.5 ? dusk : night;
+      // небо
+      const phase=t<0.5?(t/0.5):((t-0.5)/0.5);
+      const from=t<0.5?noon:dusk;
+      const to=t<0.5?dusk:night;
+      const c1=mix(from[0],to[0],phase);
+      const c2=mix(from[1],to[1],phase);
+      const c3=mix(from[2],to[2],phase);
+      const c4=mix(from[3],to[3],phase);
+      document.documentElement.style.setProperty('--c1',c1);
+      document.documentElement.style.setProperty('--c2',c2);
+      document.documentElement.style.setProperty('--c3',c3);
+      document.documentElement.style.setProperty('--c4',c4);
 
-      const c1 = mix(from[0], to[0], phase);
-      const c2 = mix(from[1], to[1], phase);
-      const c3 = mix(from[2], to[2], phase);
-      const c4 = mix(from[3], to[3], phase);
-      document.documentElement.style.setProperty('--c1', c1);
-      document.documentElement.style.setProperty('--c2', c2);
-      document.documentElement.style.setProperty('--c3', c3);
-      document.documentElement.style.setProperty('--c4', c4);
+      // солнце
+      const bottomVh=70;
+      const yvh=8+(bottomVh-8)*t;
+      const scale=1-0.35*t;
+      const bright=1.1-0.7*t;
+      sun.style.transform=`translate(-50%, ${yvh}vh) scale(${scale})`;
+      sun.style.filter=`saturate(${1.2-0.3*t}) brightness(${bright}) blur(${0.2+0.5*t}px)`;
 
-      // Солнце: 8vh → 70vh, уменьшаем и «остужаем»
-      const bottomLimitVh = 70;
-      const yvh = 8 + (bottomLimitVh-8)*t;
-      const scale = 1 - 0.35*t;
-      const bright = 1.1 - 0.7*t;
-      sun.style.transform = `translate(-50%, ${yvh}vh) scale(${scale})`;
-      sun.style.filter = `saturate(${1.2 - 0.3*t}) brightness(${bright}) blur(${0.2 + 0.5*t}px)`;
-
-      // Исчезновение, когда белая секция близко
-      if (mission){
-        const r = mission.getBoundingClientRect();
-        const threshold = window.innerHeight * 0.6; // верх белого блока ниже 40% экрана
-        sun.style.opacity = r.top < threshold ? 0 : 1;
+      if(mission){
+        const r=mission.getBoundingClientRect();
+        const threshold=window.innerHeight*0.6;
+        sun.style.opacity=r.top<threshold?0:1;
       }
     }
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('load', onScroll);
 
-    /* ===== About modal ===== */
-    document.addEventListener('DOMContentLoaded', function(){
-      const openBtn = document.getElementById('about-open');
-      const modal   = document.getElementById('about-modal');
-      const closeBtn= document.getElementById('about-close');
-      if (!openBtn || !modal || !closeBtn) return;
-
-      function openModal(){ modal.hidden = false; document.body.style.overflow='hidden'; closeBtn.focus(); }
-      function closeModal(){ modal.hidden = true;  document.body.style.overflow='';       openBtn.focus(); }
-
-      openBtn.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
-      document.addEventListener('keydown', e=>{ if(!modal.hidden && e.key === 'Escape') closeModal(); });
+    // About modal
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const openBtn=document.getElementById('about-open');
+      const modal=document.getElementById('about-modal');
+      const closeBtn=document.getElementById('about-close');
+      if(!openBtn||!modal||!closeBtn) return;
+      const open=()=>{ modal.hidden=false; document.body.style.overflow='hidden'; closeBtn.focus(); };
+      const close=()=>{ modal.hidden=true;  document.body.style.overflow='';       openBtn.focus(); };
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      modal.addEventListener('click', e=>{ if(e.target===modal) close(); });
+      document.addEventListener('keydown', e=>{ if(!modal.hidden && e.key==='Escape') close(); });
     });
 
-    onScroll(); // инициализация
+    onScroll();
   </script>
 </body>
 </html>
