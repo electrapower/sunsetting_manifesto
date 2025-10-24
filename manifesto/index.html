@@ -299,32 +299,43 @@ h1 {
   line-height: 1.5;
 }
 
-.mission {
-  text-align: center;
-  padding: 12vh 10vw;
-  background: #fff;
-  color: #0B1525;
-  position: relative;
-  z-index: 1;
+/* Mission — компактная и уже */
+.mission{
+  text-align:center;
+  padding: 6vh 6vw;          /* было 12vh 10vw */
+  background:#fff;
+  color:#0B1525;
+  position:relative;
+  z-index:1;
 }
 
-.mission-inner {
-  max-width: 800px;
+.mission-inner{
+  max-width: 680px;          /* было 800px — делаем уже */
   margin: 0 auto;
 }
 
-.mission h2 {
+.mission h2{
+  margin: 0 0 16px;          /* меньше отступ сверху/снизу */
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
-  margin-bottom: 24px;
   text-transform: uppercase;
 }
 
-.mission p {
+.mission p{
+  margin: 0 0 24px;          /* было 40px */
   font-size: clamp(16px, 1.6vw, 22px);
-  line-height: 1.6;
-  margin-bottom: 40px;
+  line-height: 1.55;
   text-transform: none;
+}
+
+.cta-outline-light{
+  padding: 12px 24px;        /* чуть компактнее кнопка */
+}
+
+/* ещё плотнее на мобильных */
+@media (max-width: 640px){
+  .mission{ padding: 5vh 6vw; }
+  .mission-inner{ max-width: 560px; }
 }
 
 /* Контурная кнопка — в том же стиле, что и footer */
