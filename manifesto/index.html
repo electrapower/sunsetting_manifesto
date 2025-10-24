@@ -46,7 +46,20 @@
       border-bottom:4px solid #fff;
       background:rgba(0,0,0,.25); backdrop-filter:blur(6px);
     }
-    .brand{font-weight:700;font-size:28px;letter-spacing:1px}
+    .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:28px;
+    letter-spacing:1px;
+    }
+    .brand-icon{
+    display:block;
+    height:28px; width:auto;
+    /* Чуть плотнее выглядит на полупрозрачном хедере: */
+    filter: saturate(1.1) brightness(1.05);
+    }
     .header-link{
       font-family:"IBM Plex Mono",monospace;
       color:#fff; text-decoration:none;
@@ -112,7 +125,7 @@
     <div class="sun" aria-hidden="true"></div>
 
     <section class="hero">
-      <h1>We Provide Full Access to Basic Miracles</h1>
+      <h1>Your Full Access to Basic Miracles</h1>
       <p>Offline is the new luxury.</p>
       <p>Track, rate, and share the world's most beautiful sunsets. AI-powered predictions meet human connection in the ultimate offline social experience.</p>
       <a href="#how" class="cta">Start Tracking Sunsets</a>
