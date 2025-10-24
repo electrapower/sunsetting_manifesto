@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SunSettings — Манифест закатов</title>
+  <meta name="description" content="Мы возвращаем людей к чудесам оффлайна. Закаты можно предсказать — и не пропустить." />
+  <meta property="og:title" content="SunSettings — Манифест закатов" />
+  <meta property="og:description" content="Закаты можно предсказать — и не пропустить." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-sunset.jpg" />
+  <meta property="og:url" content="https://sunsettings.vercel.app/manifesto" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg1:#FFB457;--bg2:#FF6A3D;--bg3:#7A5CFF;--bg4:#1B2A4A;
+      --text:#0B0B0C;--text-invert:#FFFFFF;--accent:#FF6A3D;
+      --max:72rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background: linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
+      background-size: 100% 300%;
+      animation: skyshift 28s ease-in-out infinite alternate;
+    }
+    @keyframes skyshift { from{background-position:0% 0%} to{background-position:0% 100%} }
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
+    header{padding:24px 0 8px}
+    .brand{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;font-size:20px;letter-spacing:0.4px}
+    main{display:block}
+    .hero{
+      position:relative; padding:14vh 0 10vh;
+      color:var(--text);
+    }
+    .sun{
+      position:absolute; top:8vh; right:6vw; width:120px; height:120px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #FFF6E5, #FFD08A 60%, rgba(255,106,61,0.8));
+      filter: blur(0.2px); opacity:0.9;
+      animation: sundrift 20s ease-in-out infinite alternate;
+    }
+    @keyframes sundrift { from{transform:translateY(-10px)} to{transform:translateY(40px)} }
+    h1{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;line-height:1.05;margin:0 0 16px;font-size:clamp(42px,6vw,84px); color:var(--text)}
+    p.lead{font-size:clamp(18px,2.2vw,24px);max-width:50ch;line-height:1.35;margin:0 0 24px}
+    .cta{
+      display:inline-block; padding:14px 20px; border-radius:12px;
+      background:var(--accent); color:#fff; font-weight:700; text-decoration:none;
+      transition: transform .12s ease, box-shadow .12s ease;
+      box-shadow:0 8px 24px rgba(255,106,61,.25);
+    }
+    .cta:focus-visible{outline:3px solid #fff; outline-offset:2px}
+    .cta:hover{transform:translateY(-1px)}
+    section{padding:64px 0}
+    .card{
+      background:rgba(255,255,255,.6); backdrop-filter:saturate(120%) blur(6px);
+      border-radius:16px; padding:28px; max-width:70ch; box-shadow:0 10px 30px rgba(0,0,0,.08);
+      color:#0B0B0C;
+    }
+    h2{font-size:clamp(28px,3.2vw,40px);margin:0 0 16px}
+    .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .foot{color:#fff;opacity:.9;font-size:14px;padding:40px 0}
+    .reveal{opacity:0; transform:translateY(12px); animation:reveal .7s ease forwards}
+    .reveal.delay1{animation-delay:.1s} .reveal.delay2{animation-delay:.2s} .reveal.delay3{animation-delay:.3s}
+    @keyframes reveal{to{opacity:1; transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header aria-label="Site header">
+      <div class="brand">SunSettings</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="sun" aria-hidden="true"></div>
+        <h1 id="hero-title" class="reveal">Закаты невовремя.</h1>
+        <p class="lead reveal delay1">Мы торопимся. Работы — больше, жизни — меньше. Экран светит днём и ночью, а небо — пропускаем.</p>
+        <a class="cta reveal delay2" href="#manifesto">Поймать закат сегодня</a>
+      </section>
+
+      <section id="manifesto" aria-labelledby="m-title">
+        <div class="card reveal">
+          <h2 id="m-title">Манифест</h2>
+          <p>Мы перестали приходить вовремя к чудесам. Но они всё ещё случаются — просто без нас.</p>
+          <p>Мир ускорился до шума. Наш ответ — <strong>замедление</strong>.</p>
+          <p>Красоту можно измерить. Закат — предсказать. Значит, можно <strong>успеть</strong>.</p>
+          <p>Это не ещё одно приложение. Это возвращение к новому лакшери — <strong>оффлайн</strong>.</p>
+          <p>Технологии довели нас до края внимания. Пусть теперь они помогут его вернуть.</p>
+          <p><strong>SunSettings — ты приходишь вовремя.</strong> Поймай свой закат сегодня.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="how-title">
+        <h2 id="how-title" class="reveal">Как это работает</h2>
+        <div class="grid">
+          <div class="card reveal delay1"><strong>1. Прогноз</strong><br/>Мы считаем вероятность “роскошного” заката для твоей точки.</div>
+          <div class="card reveal delay2"><strong>2. Напоминание</strong><br/>Уведомление заранее, чтобы успеть выйти из дома.</div>
+          <div class="card reveal delay3"><strong>3. Момент</strong><br/>Выключаешь телефон. Смотришь. Запоминаешь.</div>
+        </div>
+      </section>
+
+      <section aria-labelledby="join-title">
+        <div class="card reveal">
+          <h2 id="join-title">Присоединиться</h2>
+          <form action="https://example.com/subscribe" method="post">
+            <label for="email">Почта для раннего доступа</label><br/>
+            <input id="email" name="email" type="email" required placeholder="you@example.org" style="margin:8px 0 12px; padding:12px 14px; border-radius:10px; border:1px solid #ccc; width:100%; max-width:420px;" />
+            <button class="cta" type="submit">Подписаться</button>
+          </form>
+          <p style="margin-top:12px;font-size:14px;opacity:.8">Счётчик закатов: <strong>0/365</strong></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot" aria-label="Site footer">
+      © SunSettings · оффлайн — это роскошь, доступная всем
+    </footer>
+  </div>
+</body>
+</html>
