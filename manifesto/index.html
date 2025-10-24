@@ -98,10 +98,6 @@
       background:#fff; color:#0B1525; z-index:1; position:relative;
       text-transform:uppercase;
     }
-    footer{
-      text-align:center; font-size:14px; padding:40px 0;
-      border-top:4px solid #fff; background:rgba(0,0,0,.3)
-    }
 
     /* Солнце — фиксируем к вьюпорту, управляем скроллом в JS */
     .sun{
@@ -118,6 +114,35 @@
     @media (prefers-reduced-motion: reduce){
       body::before{ animation:none !important }
     }
+    /* Footer */
+    .footer{
+    color:#fff; text-align:center; padding:32px 16px;
+    border-top:4px solid #fff; background:rgba(0,0,0,.3);
+    }
+    .footer-actions{ display:flex; gap:18px; justify-content:center; align-items:center; margin-bottom:8px }
+    .linklike{
+    background:transparent; color:#fff; text-decoration:none; cursor:pointer;
+    border:2px solid #fff; padding:8px 14px; border-radius:4px; font-weight:700; text-transform:uppercase;
+    }
+    .linklike:hover{ background:#fff; color:#0B1525 }
+
+    /* Modal */
+    .modal-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,.6);
+    display:grid; place-items:center; z-index:50;
+    }
+    .modal{
+    background:#fff; color:#0B1525; border:4px solid #0B1525; border-radius:6px;
+    padding:24px; width:min(92vw, 520px);
+    text-transform:uppercase;
+    }
+    .modal h3{ font-size:24px; margin-bottom:8px }
+    .modal p{ margin:0 0 16px; font-size:16px; text-transform:none }
+    .modal-actions{ display:flex; justify-content:flex-end }
+    .cta-outline{
+    background:transparent; color:#0B1525; border:3px solid #0B1525; padding:10px 16px; font-weight:700;
+    }
+    .cta-outline:hover{ background:#0B1525; color:#fff }
   </style>
 </head>
 <body>
@@ -189,9 +214,28 @@
     </section>
   </main>
 
-  <footer>
-    © Sunsettings · Offline is the New Luxury · About / Contact
+  <footer class="foot" aria-label="Site footer">
+    <div class="foot-actions">
+      <button type="button" class="linklike" id="about-open" aria-haspopup="dialog" aria-controls="about-modal">
+      About
+      </button>
+      <a class="linklike" href="https://x.com/sunsettingsber" target="_blank" rel="noopener">
+      Contact
+      </a>
+    </div>
+    <div class="foot-copy">© Sunsettings · Offline is the New Luxury</div>
   </footer>
+
+<!-- ABOUT MODAL -->
+    <div class="modal-backdrop" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+      <div class="modal">
+      <h3 id="about-title">Made by Sunsettings Team</h3>
+      <p>Electra · Alyonafuria · Misha</p>
+      <div class="modal-actions">
+        <button type="button" class="cta cta-outline" id="about-close">Close</button>
+        </div>
+      </div>
+    </div>
 
   <script>
     // --- helpers для цвета ---
