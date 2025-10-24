@@ -60,21 +60,14 @@
       background:rgba(0,0,0,.25); backdrop-filter:blur(6px);
     }
     .brand{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-weight:700;
-    font-size:32px;       /* шрифт крупнее */
-    letter-spacing:1px;
-    line-height:1;        /* плотнее вертикально */
+    display:flex; align-items:center; gap:14px;
+    font-weight:700; font-size:32px; letter-spacing:1px; line-height:1;
     }
     .brand-icon{
     display:block;
-    height:1.1em;         /* иконка = размеру текста (чуть больше) */
+    height:1.15em;   /* почти равна высоте текста */
     width:auto;
-    image-rendering:auto; /* сглаживание на ретина */
-    filter:saturate(1.1) brightness(1.05);  
-  }
+    }
     .header-link{
       font-family:"IBM Plex Mono",monospace;
       color:#fff; text-decoration:none;
@@ -130,7 +123,7 @@
 <body>
   <header>
     <div class="brand">
-    <img src="/maskable-icon-512.png" alt="Sunsettings icon" class="brand-icon">
+    <img src="sunsettings-icon-transparent.png" alt="Sunsettings icon" class="brand-icon">
     <span>SUNSETTINGS</span>
     </div>
     <a href="https://catch.sunsettings.app" target="_blank" rel="noopener" class="header-link">Launch App</a>
