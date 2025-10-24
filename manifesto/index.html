@@ -298,6 +298,57 @@ h1 {
   text-transform: none;
   line-height: 1.5;
 }
+
+.mission {
+  text-align: center;
+  padding: 12vh 10vw;
+  background: #fff;
+  color: #0B1525;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.mission p {
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  text-transform: none;
+}
+
+/* Контурная кнопка — в том же стиле, что и footer */
+.cta-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border: 3px solid #0B1525;
+  border-radius: 8px;
+  color: #0B1525;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.6px;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.cta-outline-light:hover {
+  background: #0B1525;
+  color: #fff;
+  transform: translateY(-2px);
+}
   </style>
 </head>
 <body>
@@ -387,10 +438,18 @@ h1 {
 </section>
 
     <section class="mission">
-      <h2>Our Mission — Reconnect with What Matters</h2>
-      <p>Sunsettings is a movement to go offline, reconnect with each other, with ourselves, and value the simple things. In a world of digital overload, we provide access to basic miracles that have always been there, waiting for you.</p>
-      <a href="https://catch.sunsettings.app" target="_blank" rel="noopener" class="cta">Join the Movement</a>
-    </section>
+  <div class="mission-inner">
+    <h2>Our Mission — Reconnect with What Matters</h2>
+    <p>
+      Sunsettings is a movement to go offline, reconnect with each other, with ourselves, and
+      value the simple things. In a world of digital overload, we provide access to basic miracles
+      that have always been there, waiting for you.
+    </p>
+    <a href="https://catch.sunsettings.app" target="_blank" rel="noopener" class="cta-outline-light">
+      Join the Movement
+    </a>
+  </div>
+</section>
 
     <section class="section" style="text-align:center;">
       <h2>Ready to Catch Your First Sunset?</h2>
