@@ -536,10 +536,11 @@ h1 {
       document.documentElement.style.setProperty('--c4',c4);
 
       // солнце
-      const bottomVh=70;
-      const yvh=8+(bottomVh-8)*t;
-      const scale=1-0.35*t;
-      const bright=1.1-0.7*t;
+      const TOP_VH = 2;      // раньше 8 — старт выше
+      const BOTTOM_VH = 68;  // раньше 70 — чуть ниже конечная точка
+      const yvh = TOP_VH + (BOTTOM_VH - TOP_VH) * t;
+      const scale = 1 - 0.35 * t;
+      const bright = 1.1 - 0.7 * t;
       sun.style.transform = `translateY(${yvh}vh) scale(${scale})`;
       sun.style.filter=`saturate(${1.2-0.3*t}) brightness(${bright}) blur(${0.2+0.5*t}px)`;
 
