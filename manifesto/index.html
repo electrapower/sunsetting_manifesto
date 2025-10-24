@@ -233,15 +233,24 @@ h1 {
     }
 
     /* HOW IT WORKS — пять шагов */
-.card-row--five {
-  grid-template-columns: 1fr;
+.card-row--five{
+  display: flex;              /* вместо grid */
+  flex-wrap: wrap;            /* перенос строк */
   gap: 24px;
+  justify-content: center;    /* центрирует последнюю строку */
   margin-top: 28px;
 }
 
-@media (min-width: 800px) {
-  .card-row--five {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+/* базовый размер карточек: сколько влезет в строку */
+.card-row--five .card--step{
+  flex: 1 1 320px;            /* ширина-основание ~320px, растёт до свободного места */
+  max-width: 520px;           /* не растягивается бесконечно */
+}
+
+/* опционально — одинаковая высота для красоты */
+@media (min-width: 900px){
+  .card-row--five .card--step{
+    min-height: 280px;
   }
 }
 
@@ -327,7 +336,7 @@ h1 {
         <article class="card card--glass">
           <div class="card-emoji" aria-hidden="true">😔</div>
           <h3>The Problem</h3>
-          <p>We're constantly online, missing the simple miracles happening around us every single day. Sunsets are free, beautiful, and fleeting—yet we rarely stop to appreciate them.</p>
+          <p>We're constantly online, missing the simple miracles happening around us every single day. Sunsets are free, beautiful, and fleeting — yet we rarely stop to appreciate them.</p>
         </article>
 
         <article class="card card--glass">
