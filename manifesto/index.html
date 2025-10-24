@@ -81,35 +81,30 @@
       transition:opacity .25s ease, filter .08s linear, transform .08s linear;
     }
 
-    /* ===== HERO: заголовок слева, оффлайн-блок — РОВНО по центру экрана ===== */
+    /* ===== HERO: заголовок слева, блок "Offline… + текст + кнопка" РОВНО по центру экрана ===== */
 .hero{
-  /* секция сама держит высоту экрана — никакого «хвоста» */
-  min-height: 90vh;
-
-  /* grid: заголовок (row1) + центрируемый блок (row2) */
-  display: grid;
-  grid-template-rows: auto 1fr;   /* h1 сверху, остальное центрируем во второй строке */
-  row-gap: 3vh;                   /* ДЫШАЩИЙ отступ между заголовком и оффлайн-блоком */
-
-  padding: 10vh 8vw 4vh;          /* компактнее снизу, поля по краям */
+  position: relative;
+  min-height: 100svh;        /* высота = высоте экрана, корректно на мобилках */
+  padding: 10vh 8vw 4vh;     /* поля вокруг заголовка; низ компактный */
   max-width: 1060px;
   z-index: 1;
-  position: relative;
 }
 
-/* заголовок остаётся выровнен влево */
 h1{
   font-size: clamp(42px, 6vw, 96px);
   font-weight: 700;
-  margin: 0;                      /* отступом управляет row-gap */
-  text-align: left;
+  margin: 0 0 16px 0;        /* расстояние сверху управляется padding у .hero */
+  text-align: left;          /* заголовок остаётся слева */
 }
 
-/* блок "Offline… + описание + кнопка" — геометрически по ЦЕНТРУ экрана */
+/* Центруем ВНУТРИ секции: привязываем к .hero, а не ко всей странице */
 .hero-center{
-  place-self: center;             /* центр по горизонтали и вертикали во 2-й строке */
+  position: absolute;
+  left: 50%;
+  top: 50%;                  /* РОВНО центр экрана */
+  transform: translate(-50%, -50%);
+  width: min(70ch, 80vw);
   text-align: center;
-  max-width: 70ch;
 }
 
 .hero-center .kicker{
@@ -120,13 +115,11 @@ h1{
 }
 
 .hero-center .cta{
-  margin-top: 24px;
+  margin-top: 24px;          /* кнопка остаётся по центру за счёт text-align */
 }
 
-/* первый блок после hero — маленький верхний отступ */
-.section--compact{
-  padding-top: 3vh;
-}
+/* следующая секция — маленький верхний отступ, чтобы не было пустыни */
+.section--compact{ padding-top: 3vh; }
 
     /* Секции */
     .section{ padding:6vh 10vw; position:relative; z-index:1 }
