@@ -231,6 +231,64 @@ h1 {
     @media (prefers-reduced-motion: reduce){
       body::before{ animation:none !important }
     }
+
+    /* HOW IT WORKS — пять шагов */
+.card-row--five {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+@media (min-width: 800px) {
+  .card-row--five {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+.card--step {
+  background: rgba(255, 255, 255, 0.08);
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  position: relative;
+  padding: 28px 24px 24px;
+  backdrop-filter: blur(8px) saturate(120%);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.card--step:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card-number {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff, #FFD08A);
+  color: #0B1525;
+  font-weight: 800;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 208, 138, 0.8);
+}
+
+.card--step h3 {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-size: clamp(18px, 2vw, 26px);
+  text-transform: uppercase;
+}
+
+.card--step p {
+  opacity: 0.95;
+  text-transform: none;
+  line-height: 1.5;
+}
   </style>
 </head>
 <body>
@@ -281,30 +339,43 @@ h1 {
     </section>
 
     <section class="section" id="how">
-      <h2>How It Works</h2>
-      <p>Five simple steps to start your sunset journey.</p>
+  <div class="why-intro tt-none">
+    <h2 class="center">How It Works</h2>
+    <p class="lead center">Five simple steps to start your sunset journey.</p>
+  </div>
 
+  <div class="card-row card-row--five">
+    <article class="card card--step">
+      <div class="card-number">1</div>
       <h3>AI Predictions</h3>
       <p>Get AI-powered beauty forecasts for today's sunset based on real-time weather data in your location.</p>
+    </article>
 
+    <article class="card card--step">
+      <div class="card-number">2</div>
       <h3>Capture & Upload</h3>
       <p>Experience the sunset, snap a photo, and share it with the community. Your photos are minted as NFTs on Base.</p>
+    </article>
 
+    <article class="card card--step">
+      <div class="card-number">3</div>
       <h3>Rate & Compare</h3>
-      <p>Give your own rating—agree with our AI or share your unique perspective on the sunset's beauty.</p>
+      <p>Give your own rating—agree with our AI or share your unique perspective on the sunset’s beauty.</p>
+    </article>
 
+    <article class="card card--step">
+      <div class="card-number">4</div>
       <h3>Explore the Map</h3>
       <p>See sunset photos from around the world. Discover new spots and connect with fellow sunset chasers.</p>
+    </article>
 
+    <article class="card card--step">
+      <div class="card-number">5</div>
       <h3>Track Your Progress</h3>
-      <p>See how many sunsets you've caught this year and build a meaningful offline habit.</p>
-
-      <div class="stats">
-        <div class="stat"><strong>365</strong><br/>Sunsets Per Year</div>
-        <div class="stat"><strong>Global</strong><br/>Community Map</div>
-        <div class="stat"><strong>Your</strong><br/>Personal Ratings</div>
-      </div>
-    </section>
+      <p>See how many sunsets you’ve caught this year and build a meaningful offline habit.</p>
+    </article>
+  </div>
+</section>
 
     <section class="mission">
       <h2>Our Mission — Reconnect with What Matters</h2>
