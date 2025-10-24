@@ -15,7 +15,7 @@
   <meta name="msapplication-TileColor" content="#0B1525">
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  
+
   <title>Sunsettings — Offline is the New Luxury</title>
   <meta name="description" content="AI-powered sunset predictions meet human connection in the ultimate offline social experience."/>
   <meta property="og:title" content="Sunsettings — Offline is the New Luxury"/>
@@ -62,17 +62,19 @@
     .brand{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
     font-weight:700;
-    font-size:28px;
+    font-size:32px;       /* шрифт крупнее */
     letter-spacing:1px;
+    line-height:1;        /* плотнее вертикально */
     }
     .brand-icon{
     display:block;
-    height:28px; width:auto;
-    /* Чуть плотнее выглядит на полупрозрачном хедере: */
-    filter: saturate(1.1) brightness(1.05);
-    }
+    height:1.1em;         /* иконка = размеру текста (чуть больше) */
+    width:auto;
+    image-rendering:auto; /* сглаживание на ретина */
+    filter:saturate(1.1) brightness(1.05);  
+  }
     .header-link{
       font-family:"IBM Plex Mono",monospace;
       color:#fff; text-decoration:none;
@@ -128,7 +130,7 @@
 <body>
   <header>
     <div class="brand">
-    <img src="/sunsettings-icon.png" alt="Sunsettings icon" class="brand-icon" width="28" height="28" />
+    <img src="/maskable-icon-512.png" alt="Sunsettings icon" class="brand-icon">
     <span>SUNSETTINGS</span>
     </div>
     <a href="https://catch.sunsettings.app" target="_blank" rel="noopener" class="header-link">Launch App</a>
