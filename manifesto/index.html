@@ -69,17 +69,21 @@
     }
     .header-link:hover{background:#fff;color:#0B1525}
 
-    /* Sun (фикс к вьюпорту, управляется JS) */
-    .sun{
-      position:fixed; z-index:0;
-      left:calc(100% - 18vw);
-      width:140px; height:140px; border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, #FFFBEA, #FFD08A 60%, rgba(255,106,61,0.9));
-      transform:translate(-50%, 8vh) scale(1);
-      filter:saturate(1.2) brightness(1);
-      opacity:1;
-      transition:opacity .25s ease, filter .08s linear, transform .08s linear;
-    }
+    /* Sun — закреплено справа, размер и отступ адаптивные */
+.sun{
+  position: fixed;
+  z-index: 0;
+  right: clamp(16px, 6vw, 120px);         /* безопасный правый «карман» для всех ширин */
+  width: clamp(96px, 14vw, 180px);        /* адаптивный диаметр */
+  height: clamp(96px, 14vw, 180px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FFFBEA, #FFD08A 60%, rgba(255,106,61,0.9));
+  transform: translateY(8vh) scale(1);    /* стартовая высота — только по Y */
+  filter: saturate(1.2) brightness(1);
+  opacity: 1;
+  transition: opacity .25s ease, filter .08s linear, transform .08s linear;
+  pointer-events: none;
+}
 
     /* ===== HERO ===== */
 .hero {
@@ -372,7 +376,7 @@ h1 {
       const yvh=8+(bottomVh-8)*t;
       const scale=1-0.35*t;
       const bright=1.1-0.7*t;
-      sun.style.transform=`translate(-50%, ${yvh}vh) scale(${scale})`;
+      sun.style.transform = `translateY(${yvh}vh) scale(${scale})`;
       sun.style.filter=`saturate(${1.2-0.3*t}) brightness(${bright}) blur(${0.2+0.5*t}px)`;
 
       if(mission){
