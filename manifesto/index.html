@@ -137,38 +137,49 @@
     @media (prefers-reduced-motion: reduce){
       body::before{ animation:none !important }
     }
-    /* ==== equal footer buttons ==== */
-.foot-actions{
-  display:flex;
-  gap:18px;
-  justify-content:center;
-  align-items:center;
-  margin-bottom:12px;
-  flex-wrap:wrap;
+    /* ==== footer buttons unified ==== */
+.foot-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
-/* и button, и a имеют один класс linklike */
-.linklike{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+/* и button, и a имеют общий класс linklike */
+.linklike {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  /* одинаковые размеры */
-  inline-size: clamp(180px, 22vw, 220px);  /* ширина одинаковая, адаптивная */
-  block-size: 52px;                        /* одинаковая высота */
-  padding: 0 16px;                         /* внутренние отступы по бокам */
+  /* одинаковый размер */
+  inline-size: clamp(180px, 22vw, 220px); /* адаптивная одинаковая ширина */
+  block-size: 52px;                       /* одинаковая высота */
+  padding: 0 16px;                        /* внутренние отступы */
 
-  border:2px solid #fff;
-  border-radius:8px;
-  background:transparent;
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  letter-spacing:.4px;
-  cursor:pointer;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* одинаковый текст для кнопки и ссылки */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;          /* жирный, как у CONTACT */
+  text-transform: uppercase; /* ABOUT тоже станет caps */
+  letter-spacing: 0.6px;
+  line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.linklike:hover{ background:#fff; color:#0B1525 }
+.linklike:hover {
+  background: #fff;
+  color: #0B1525;
+}
   </style>
 </head>
 <body>
